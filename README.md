@@ -7,4 +7,6 @@ Get the public key from cloud9
 ```
 echo <Paste the Copied Key> >> ~/.ssh/authorized_keys
 sudo apt-get install -y nodejs
+wget https://raw.githubusercontent.com/lbaitemple/awsrobomakercreater/main/dcvsession
+chmod +x dcvsession
 ```
