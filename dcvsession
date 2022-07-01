@@ -1,0 +1,10 @@
+#!/bin/bash
+dbus-launch gsettings set org.gnome.desktop.lockdown disable-lock-screen true
+dbus-launch gsettings set com.ubuntu.update-notifier no-show-notifications true
+dbus-launch gsettings set org.gnome.shell enabled-extensions "['ubuntu-dock@ubuntu.com']"
+sudo  /sbin/iptables -A INPUT -p tcp ! -s localhost --dport 8080 -j DROP
+sudo systemctl start dcvserver
+sudo systemctl enable dcvserver
+dcv create-session my-session --owner ubuntu &> /dev/null
+sudo apt-get install -y jq &> /dev/null
+echo DCV preview URL : https://$C9_PID.vfs.cloud9.$(curl --silent http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region).amazonaws.com
